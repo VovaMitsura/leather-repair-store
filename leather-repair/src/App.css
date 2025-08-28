@@ -68,6 +68,15 @@ body {
 .btn:active { transform: translateY(1px); }
 .btn--primary {}
 
+/* A11y utility: hide visually but keep for screen readers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 /* Sections */
 .section { padding: 56px 0; }
 .section--muted { background: var(--bg-muted); }
