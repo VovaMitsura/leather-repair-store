@@ -3,7 +3,7 @@
 
 const ALLOWED_METHOD = 'POST';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== ALLOWED_METHOD) {
     res.setHeader('Allow', ALLOWED_METHOD);
     return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
@@ -78,7 +78,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ ok: false, error: 'Unexpected error' });
   }
-};
+}
 
 function escapeHtml(s) {
   return String(s)
@@ -88,4 +88,3 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
-
