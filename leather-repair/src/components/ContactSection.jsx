@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', phone: '', message: '', _hp: '' });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState({ open: false, type: 'success', message: '' });
+  const closeBtnRef = useRef(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,16 +33,40 @@ export default function ContactSection() {
       if (!res.ok || !data.ok) {
         const msg = (data && (data.error || data.message)) || 'Failed to send. Please try again later.';
         setStatus({ type: 'error', message: msg });
+        setModal({ open: true, type: 'error', message: msg });
       } else {
-        setStatus({ type: 'success', message: 'Thanks! We will reach out shortly.' });
+        const msg = 'Thanks! Your message was sent. We will reach out shortly.';
+        setStatus({ type: 'success', message: msg });
+        setModal({ open: true, type: 'success', message: msg });
         setForm({ name: '', phone: '', message: '', _hp: '' });
       }
     } catch (err) {
-      setStatus({ type: 'error', message: 'Network error. Please try again.' });
+      const msg = 'Network error. Please try again.';
+      setStatus({ type: 'error', message: msg });
+      setModal({ open: true, type: 'error', message: msg });
     } finally {
       setLoading(false);
     }
   }
+
+  function closeModal() {
+    setModal((m) => ({ ...m, open: false }));
+  }
+
+  useEffect(() => {
+    if (modal.open) {
+      // focus the primary button for accessibility
+      setTimeout(() => closeBtnRef.current?.focus(), 0);
+    }
+  }, [modal.open]);
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape' && modal.open) closeModal();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [modal.open]);
 
   return (
     <section className="section" id="contact" aria-labelledby="contact-title">
@@ -68,13 +94,29 @@ export default function ContactSection() {
           <button className="btn btn--primary" type="submit" disabled={loading}>
             {loading ? 'Sending…' : 'Submit'}
           </button>
-          {status.message && (
-            <p className="form__status" role="status" style={{ color: status.type === 'error' ? '#b00020' : 'inherit' }}>
-              {status.message}
-            </p>
-          )}
+          {/* status is still updated for SRs, but visual message moved to modal */}
+          <span className="visually-hidden" aria-live="polite">{status.message}</span>
         </form>
       </div>
+      {modal.open && (
+        <div className={`modal modal--${modal.type}`} role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+          <div className="modal__overlay" onClick={closeModal} />
+          <div className="modal__dialog">
+            <div className="modal__head">
+              <span className="modal__icon" aria-hidden="true">{modal.type === 'success' ? '✓' : '!'}</span>
+              <h3 className="modal__title" id="contact-modal-title">
+                {modal.type === 'success' ? 'Message Sent' : 'Submission Error'}
+              </h3>
+            </div>
+            <p className="modal__body">{modal.message}</p>
+            <div className="modal__actions">
+              <button ref={closeBtnRef} className="modal__close" onClick={closeModal}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
