@@ -13,9 +13,8 @@ export default function NavBar() {
   return (
     <nav className="nav" aria-label="Primary">
       <div className="container nav__inner">
-        <a href="#home" className="nav__brand" aria-label="MITSURA LLC Home">
-          <img className="nav__logo" src='/img/logo.png' alt="" />
-          <span>MITSURA LLC</span>
+        <a href="#home" className="nav__brand" aria-label="Home">
+          <img className="nav__logo" src='/img/logo.png' alt="Mitsura LLC logo" />
         </a>
         <ul className="nav__list">
           {links.map((l) => {
