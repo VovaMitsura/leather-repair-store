@@ -1,29 +1,34 @@
 import React from 'react';
-
-const items = [
-  { src: '/img/chair-before.png', label: 'Before', alt: 'Chair seat before leather repair' },
-  { src: '/img/chair-after.png', label: 'After', alt: 'Chair seat after leather repair' },
-  { src: '/img/seat-before.png', label: 'Before', alt: 'Car seat before leather repair' },
-  { src: '/img/seat-after.png', label: 'After', alt: 'Car seat after leather repair' },
-  { src: '/img/sofa-before.png', label: 'Before', alt: 'Sofa cushion before leather repair' },
-  { src: '/img/sofa-after.png', label: 'After', alt: 'Sofa cushion after leather repair' },
-];
+import BeforeAfter from './BeforeAfter.jsx';
 
 export default function GallerySection() {
   return (
-    <section className="section" id="gallery" aria-labelledby="gallery-title">
+    <section className="section section--dark" id="gallery" aria-labelledby="gallery-title">
       <div className="container">
-        <h2 className="section__title" id="gallery-title">Before & After</h2>
-        <div className="grid grid--gallery">
-          {items.map((it, idx) => (
-            <figure className="gallery__figure" key={idx}>
-              <div className="gallery__media">
-                <img className="gallery__img gallery__img--cover" src={it.src} alt={it.alt} loading="lazy" />
-                <img className="gallery__img gallery__img--contain" src={it.src} alt="" aria-hidden="true" />
-              </div>
-              <figcaption className="gallery__caption">{it.label}</figcaption>
-            </figure>
-          ))}
+        <h2 className="section__title" id="gallery-title">Our work</h2>
+        <p className="lead">Exceptional leather restorations</p>
+        <div className="before-after-grid">
+          <BeforeAfter
+            after="/img/chair-before.png"
+            before="/img/chair-after.png"
+            altBefore="Chair seat before leather repair"
+            altAfter="Chair seat after leather repair"
+            label="Chair repair"
+          />
+          <BeforeAfter
+            after="/img/seat-before.png"
+            before="/img/seat-after.png"
+            altBefore="Car seat before leather repair"
+            altAfter="Car seat after leather repair"
+            label="Car seat repair"
+          />
+          <BeforeAfter
+            after="/img/sofa-before.png"
+            before="/img/sofa-after.png"
+            altBefore="Sofa cushion before leather repair"
+            altAfter="Sofa cushion after leather repair"
+            label="Sofa repair"
+          />
         </div>
       </div>
     </section>

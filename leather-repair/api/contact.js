@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, message, _hp } = req.body || {};
+    const { name, phone, message, email, _hp } = req.body || {};
 
     // Honeypot: if filled, pretend success but do nothing
     if (typeof _hp === 'string' && _hp.trim() !== '') {
@@ -29,6 +29,9 @@ export default async function handler(req, res) {
     if (safeName.length > 120) errors.push('Name too long');
     if (safePhone.length > 40) errors.push('Phone too long');
     if (safeMessage.length > 4000) errors.push('Message too long');
+    const safeEmail = typeof email === 'string' ? email.trim() : '';
+    if (safeEmail && safeEmail.length > 200) errors.push('Email too long');
+    if (safeEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(safeEmail)) errors.push('Email looks invalid');
 
     // loose phone validation: at least 7 digits
     const digitCount = (safePhone.match(/\d/g) || []).length;
@@ -47,12 +50,13 @@ export default async function handler(req, res) {
     }
 
     const subject = `New contact form: ${safeName}`;
-    const text = `New contact submission\n\nName: ${safeName}\nPhone: ${safePhone}\n\nMessage:\n${safeMessage}`;
+    const text = `New contact submission\n\nName: ${safeName}\nPhone: ${safePhone}\nEmail: ${safeEmail || '—'}\n\nMessage:\n${safeMessage}`;
     const html = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; line-height:1.5;">
         <h2 style="margin:0 0 8px;">New contact submission</h2>
         <p style="margin:0 0 8px;"><strong>Name:</strong> ${escapeHtml(safeName)}</p>
         <p style="margin:0 0 8px;"><strong>Phone:</strong> ${escapeHtml(safePhone)}</p>
+        <p style="margin:0 0 8px;"><strong>Email:</strong> ${escapeHtml(safeEmail || '—')}</p>
         <p style="margin:12px 0 4px;"><strong>Message:</strong></p>
         <pre style="white-space:pre-wrap; background:#f7f7f7; padding:12px; border-radius:8px;">${escapeHtml(safeMessage)}</pre>
       </div>

@@ -1,74 +1,55 @@
 import React from 'react';
 
-const services = [
+const items = [
   {
-    title: 'Furniture',
-    details: 'sofas, recliners, office chairs, ottomans, headboards',
-    bullets: [
-      'Seam repairs and panel replacement',
-      'Foam/padding rebuild and cushion work',
-      'Pet scratch and claw mark blending',
-      'Deep clean, condition, and protection',
-      'Custom dye and color matching',
-    ],
+    title: 'Leather scratch repair',
+    desc: "Restore your leather's pristine condition with expert scratch repair.",
+    href: '#/service/leather-scratch-repair',
+    img: 'https://cdn.b12.io/client_media/tF1eDyDV/1332c3ca-8689-11f0-9956-0242ac110002-jpg-hero_image.jpeg',
+    alt: 'Technician repairing a leather surface close-up',
   },
   {
-    title: 'Automotive',
-    details: 'car seats, steering wheels, interiors',
-    bullets: [
-      'Bolster wear and crack stabilization',
-      'Perforated seat-safe recolor and repair',
-      'Stitching touch-ups and seam fixes',
-      'Steering wheel leather refinishing',
-      'Spot dye and panel blending',
-    ],
+    title: 'Leather recoloring',
+    desc: 'Revitalize your leather with our professional recoloring services.',
+    href: '#/service/leather-recoloring',
+    img: 'https://cdn.b12.io/client_media/tF1eDyDV/131b6e32-8689-11f0-9b2d-0242ac110002-jpg-hero_image.jpeg',
+    alt: 'Leather recliner being recolored',
   },
   {
-    title: 'Leather recoloring & restoration',
-    details: 'bring back original color and finish',
-    bullets: [
-      'UV fade correction and color revival',
-      'Full/partial recolor with finish options (matte–gloss)',
-      'Topcoat protection for durability',
-      'Crease and wear blending',
-    ],
-  },
-  {
-    title: 'Scratch, crack, and scuff repair',
-    details: 'targeted blends for durable results',
-    bullets: [
-      'Minor scratch leveling and recolor',
-      'Crack fill and reinforcement',
-      'Edge wear and scuff restoration',
-      'Texture and grain re-creation where needed',
-    ],
+    title: 'Leather conditioning',
+    desc: 'Nourish and protect your leather with expert conditioning.',
+    href: '#/service/leather-conditioning',
+    img: 'https://cdn.b12.io/client_media/tF1eDyDV/13587761-8689-11f0-8e06-0242ac110002-jpg-hero_image.jpeg',
+    alt: 'Applying leather conditioner close-up',
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="section" id="services" aria-labelledby="services-title">
+    <section className="section section--dim" id="services" aria-labelledby="services-title">
       <div className="container">
-        <h2 className="section__title" id="services-title">Services</h2>
-        <div className="grid grid--cards">
-          {services.map((s) => (
-            <details className="card card--service" key={s.title}>
-              <summary className="service__summary">
-                <div>
-                  <h3 className="card__title">{s.title}</h3>
-                  <p className="card__body">{s.details}</p>
+        <h2 className="section__title" id="services-title">Expert leather care</h2>
+        <p className="lead">Revitalize your leather furnishings</p>
+        <ul className="items-grid">
+          {items.map((it) => (
+            <li key={it.title} className="items-grid__item">
+              <a className="items-grid__body" href={it.href} aria-label={`Learn more: ${it.title}`}>
+                <figure className="items-grid__media">
+                  <img src={it.img} alt={it.alt} loading="lazy" />
+                </figure>
+                <div className="items-grid__content">
+                  <div className="items-grid__header">
+                    {it.title}
+                    <svg aria-hidden="true" viewBox="0 0 10 17" className="items-grid__arrow">
+                      <path d="M1.25111 16.0843c-.320261 0-.640343-.1222-.88465-.3663-.488613-.4886-.488613-1.2807 0-1.7693l5.90679-5.90664L.36646 2.13545c-.488613-.48844-.488613-1.28069 0-1.769124.488434-.488435 1.28069-.488435 1.76912 0L8.92684 7.15759c.48844.48843.48844 1.28068 0 1.7693L2.13558 15.7181c-.24412.244-.56421.3662-.88447.3662Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                  <div className="items-grid__desc">{it.desc}</div>
                 </div>
-              </summary>
-              <div className="service__content">
-                <ul className="service__list">
-                  {s.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            </details>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
