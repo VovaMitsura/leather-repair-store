@@ -56,6 +56,27 @@ body {
   .nav__link { padding: 10px 12px; font-size: 15px; }
 }
 
+/* Mobile polish: Galaxy S21 and similar widths */
+@media (max-width: 480px) {
+  /* Keep nav usable without wrapping awkwardly */
+  .nav__inner { padding: 12px 0; }
+  .nav__brand { font-size: 18px; gap: 10px; }
+  .nav__logo { height: 28px; }
+  .nav__list { gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav__link { padding: 8px 10px; font-size: 14px; }
+
+  /* Hero: avoid 100vh issues and fixed backgrounds on mobile */
+  .hero { min-height: 100svh; padding: 64px 0 48px; }
+  .hero.hero--image { background-attachment: scroll !important; }
+
+  /* Services cards: prevent overflow from wide min widths */
+  .items-grid { grid-template-columns: 1fr; }
+  .items-grid__content { padding: 16px; }
+
+  /* Before/After: ensure comfortable height */
+  .before-after__viewport { aspect-ratio: 4 / 3; }
+}
+
 /* Hero */
 .hero {
   padding: 88px 0 72px;
