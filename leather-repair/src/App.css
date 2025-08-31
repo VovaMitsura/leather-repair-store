@@ -24,6 +24,8 @@ body {
   background: var(--bg);
   line-height: 1.6;
 }
+/* Constrain images to their containers to avoid overflow */
+img { max-width: 100%; height: auto; }
 
 .app { display: flex; flex-direction: column; min-height: 100%; }
 .app > main { flex: 1 0 auto; }
@@ -61,7 +63,7 @@ body {
   .nav__inner { padding: 12px 0; }
   .nav__brand { font-size: 18px; gap: 10px; }
   .nav__logo { height: 28px; }
-  .nav__list { gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav__list { gap: 8px; flex-wrap: wrap; overflow-x: hidden; }
   .nav__link { padding: 8px 10px; font-size: 14px; }
 
   /* Hero: avoid 100vh issues and fixed backgrounds on mobile */
@@ -76,6 +78,64 @@ body {
   .before-after__viewport { aspect-ratio: 4 / 3; }
 }
 
+/* Prevent Before/After grid from overflowing small screens */
+@media (max-width: 700px) {
+  .before-after-grid { grid-template-columns: 1fr; }
+}
+
+/* Compact scale + overflow safety on very small devices (e.g., 360–420px width) */
+@media (max-width: 420px) {
+  body { font-size: 15px; }
+  .section { padding: 36px 0; }
+  .section__title { font-size: 20px; }
+  .lead { font-size: 14px; }
+
+  /* Navbar */
+  .nav__inner { gap: 8px; }
+  .nav__list { gap: 6px; }
+  .nav__link { padding: 6px 8px; font-size: 13px; }
+
+  /* Hero text */
+  .hero__title { font-size: 26px; }
+  .hero__subtitle { font-size: 16px; }
+
+  /* Buttons */
+  .btn { padding: .6rem .9rem; font-size: 14px; }
+
+  /* Services grid */
+  .items-grid { grid-template-columns: 1fr; gap: 14px; }
+  .items-grid__item,
+  .items-grid__body { min-width: 0; }
+  .items-grid__content { padding: 14px; }
+  .items-grid__header { font-size: 18px; }
+  .items-grid__desc { font-size: 15px; }
+
+  /* Before/After */
+  .before-after-grid { grid-template-columns: 1fr; gap: 14px; }
+  .before-after__tag { font-size: 11px; padding: 4px 8px; }
+  .before-after__range::-webkit-slider-thumb { width: 16px; height: 16px; margin-top: -5px; }
+  .before-after__range::-moz-range-thumb { width: 16px; height: 16px; }
+
+  /* Testimonials */
+  .simple-cards { gap: 12px; }
+  .simple-cards__body { padding: 12px; }
+
+  /* Contact form */
+  .form { max-width: 100%; }
+  .form__row { gap: 4px; margin-bottom: 10px; }
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="tel"],
+  .form textarea { padding: 8px 10px; font-size: 14px; }
+  .contact { gap: 16px; }
+  .contact__details { padding: 12px; }
+
+  /* Detail page */
+  .detail { gap: 16px; }
+  .detail__title { font-size: 22px; }
+  .detail__desc { font-size: 16px; }
+}
+
 /* Hero */
 .hero {
   padding: 88px 0 72px;
@@ -83,6 +143,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .hero--image { color: #fff; }
 .hero__content { text-align: center; }
@@ -98,6 +159,24 @@ body {
   font-size: clamp(16px, 2.5vw, 20px);
 }
 .highlight { background: rgba(255,255,255,.18); padding: 0 .25em; border-radius: 4px; }
+
+/* Fun sticker on hero */
+.sticker {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--brand);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  transform: rotate(-6deg);
+}
+@media (max-width: 480px) {
+  .sticker { top: 12px; right: 12px; padding: 6px 10px; font-size: 14px; }
+}
 
 /* Smaller hero variant (used on FAQ) */
 .hero--small { min-height: 25vh; padding: 48px 0 40px; }
@@ -356,6 +435,13 @@ body {
 .items-grid__arrow { width: 16px; height: 22px; color: var(--text); }
 .items-grid__desc { margin-top: 12px; color: var(--text-muted); font-size: 17px; }
 
+/* Avoid horizontal scroll for services on very small widths */
+@media (max-width: 420px) {
+  .items-grid { grid-template-columns: 1fr; gap: 16px; }
+  .items-grid__item,
+  .items-grid__body { min-width: 0; }
+}
+
 /* Darker card styling within dim section */
 .section--dim .items-grid__item { background: #1a1a1a; border-color: #2d2d2d; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
 .section--dim .items-grid__item:hover { border-color: #3a3a3a; box-shadow: 0 12px 28px rgba(0,0,0,.5); }
@@ -392,6 +478,31 @@ body {
 @media (max-width: 900px) {
   .text-image--right { grid-template-columns: 1fr; }
   .contact { grid-template-columns: 1fr; }
+}
+
+/* Floating Call widget */
+.call-widget {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--brand);
+  color: #fff;
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.call-widget:hover { filter: brightness(1.05); }
+.call-widget__icon { width: 18px; height: 18px; display: block; }
+.call-widget__text { font-weight: 700; }
+@media (max-width: 480px) {
+  .call-widget { right: 12px; bottom: 12px; padding: 10px 12px; }
+  .call-widget__text { font-size: 14px; }
 }
 
 /* Service detail page */

@@ -15,6 +15,7 @@ export default function HeroSection() {
         backgroundAttachment: 'fixed',
       }}
     >
+      <div className="sticker" aria-label="Great pricing badge">Great Pricing!</div>
       <div className="container hero__content hero__content--left">
         <h1 className="hero__title">Revitalize your leather</h1>
         <p className="hero__subtitle">

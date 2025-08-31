@@ -11,6 +11,7 @@ import ContactSection from './components/ContactSection.jsx';
 import Footer from './components/Footer.jsx';
 import ServiceDetail from './components/ServiceDetail.jsx';
 import FaqPage from './components/FaqPage.jsx';
+import CallWidget from './components/CallWidget.jsx';
 
 function parseRoute(hash) {
   if (hash && hash.startsWith('#/service/')) {
@@ -57,6 +58,7 @@ export default function App() {
           </main>
         </>
       )}
+      <CallWidget />
       <Footer />
     </div>
   );
