@@ -123,7 +123,7 @@ export default function ContactSection() {
               <div className="contact-details__row">
                 <div className="h3 contact-details__title">Get in touch</div>
                 <div className="contact-details__email">
-                  <a className="email" href="mailto:vm594@drexel.edu">vm594@drexel.edu</a>
+                  <a className="email" href="mailto:micuranikolaj@gmail.com">micuranikolaj@gmail.com</a>
                 </div>
               </div>
               <div className="contact-details__row">
