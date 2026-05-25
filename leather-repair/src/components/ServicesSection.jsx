@@ -41,34 +41,53 @@ function Icon({ name }) {
   }
 }
 
+function Card({ s }) {
+  return (
+    <li className="svc-grid__item">
+      <a className="svc-grid__body" href={s.href} aria-label={s.featured ? `Learn more about ${s.title}` : `Get a quote for ${s.title}`}>
+        <span className="svc-grid__icon" aria-hidden="true"><Icon name={s.icon} /></span>
+        <div className="svc-grid__content">
+          <h3 className="svc-grid__title">{s.title}</h3>
+          <p className="svc-grid__desc">{s.desc}</p>
+          <span className="svc-grid__link">
+            {s.featured ? 'Learn more' : 'Get a quote'}
+            <svg viewBox="0 0 10 10" aria-hidden="true" className="svc-grid__arrow">
+              <path d="M1 5h7M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </li>
+  );
+}
+
 export default function ServicesSection() {
+  const featured = SERVICES.filter((s) => s.featured);
+  const others = SERVICES.filter((s) => !s.featured);
+
   return (
     <section className="section section--dim" id="services" aria-labelledby="services-title">
       <div className="container">
         <h2 className="section__title" id="services-title">What we repair</h2>
         <p className="lead">From a single scratch to a full recolor — leather, vinyl, and upholstery across sofas, cars, boats, motorcycles, and RVs.</p>
-        <ul className="svc-grid">
-          {SERVICES.map((s) => (
-            <li key={s.key} className="svc-grid__item">
-              <a className="svc-grid__body" href={s.href} aria-label={s.featured ? `Learn more about ${s.title}` : `Get a quote for ${s.title}`}>
-                <span className="svc-grid__icon" aria-hidden="true"><Icon name={s.icon} /></span>
-                <div className="svc-grid__content">
-                  <div className="svc-grid__head">
-                    <h3 className="svc-grid__title">{s.title}</h3>
-                    {s.featured && <span className="svc-grid__tag">Featured</span>}
-                  </div>
-                  <p className="svc-grid__desc">{s.desc}</p>
-                  <span className="svc-grid__link">
-                    {s.featured ? 'Learn more' : 'Get a quote'}
-                    <svg viewBox="0 0 10 10" aria-hidden="true" className="svc-grid__arrow">
-                      <path d="M1 5h7M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    </svg>
-                  </span>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+
+        {featured.length > 0 && (
+          <>
+            <h3 className="svc-subhead">Featured services <span className="svc-subhead__hint">— click to see process &amp; photos</span></h3>
+            <ul className="svc-grid svc-grid--featured">
+              {featured.map((s) => <Card key={s.key} s={s} />)}
+            </ul>
+          </>
+        )}
+
+        {others.length > 0 && (
+          <>
+            <h3 className="svc-subhead">Also available <span className="svc-subhead__hint">— get a free estimate</span></h3>
+            <ul className="svc-grid">
+              {others.map((s) => <Card key={s.key} s={s} />)}
+            </ul>
+          </>
+        )}
       </div>
     </section>
   );

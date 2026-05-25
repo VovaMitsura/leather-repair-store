@@ -52,8 +52,7 @@ export const SERVICES = [
     key: 'conditioning',
     title: 'Cleaning & conditioning',
     desc: 'Deep cleans and protective conditioning to extend leather life.',
-    href: '#/service/leather-conditioning',
-    featured: true,
+    href: '#contact',
     icon: 'drop',
   },
   {
