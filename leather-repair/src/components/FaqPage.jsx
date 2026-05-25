@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function FaqPage() {
   const bg =
     "linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,.3)), url('https://cdn.b12.io/client_media/tF1eDyDV/0e736718-8689-11f0-8573-0242ac110002-jpg-hero_image.jpeg')";
@@ -12,7 +10,6 @@ export default function FaqPage() {
           backgroundImage: bg,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="container hero__content hero__content--left">

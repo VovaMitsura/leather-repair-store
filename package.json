@@ -1,0 +1,14 @@
+{
+  "name": "leather-repair-store",
+  "private": true,
+  "description": "Proxy scripts so common commands work from the repo root. The real project is in ./leather-repair/",
+  "scripts": {
+    "dev": "npm --prefix leather-repair run dev",
+    "dev:server": "npm --prefix leather-repair run dev:server",
+    "build": "npm --prefix leather-repair run build",
+    "preview": "npm --prefix leather-repair run preview",
+    "lint": "npm --prefix leather-repair run lint",
+    "images": "npm --prefix leather-repair run images",
+    "install:all": "npm --prefix leather-repair install"
+  }
+}

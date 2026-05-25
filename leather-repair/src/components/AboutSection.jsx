@@ -1,12 +1,10 @@
-import React from 'react';
-
 export default function AboutSection() {
   return (
     <section className="section section--dark" id="about" aria-labelledby="about-title">
       <div className="container">
         <div className="text-image text-image--right">
           <div className="text-image__content">
-            <h2 className="section__title" id="about-title">CRAFTING LEATHER EXCELLENCE</h2>
+            <h2 className="section__title" id="about-title">Crafting leather excellence</h2>
             <p className="lead">Your trusted leather restoration partner</p>
             <p>
               At Mitsura LLC, we specialize in transforming tired leather into stunning, revitalized pieces. Our expert
