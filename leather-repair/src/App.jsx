@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import NavBar from './components/NavBar.jsx';
 import HeroSection from './components/HeroSection.jsx';
+import ItemTypes from './components/ItemTypes.jsx';
 import ProcessStrip from './components/ProcessStrip.jsx';
 import ServicesSection from './components/ServicesSection.jsx';
 import WhyUs from './components/WhyUs.jsx';
@@ -98,6 +99,7 @@ export default function App() {
         <>
           <HeroSection />
           <main>
+            <ItemTypes />
             <ProcessStrip />
             <AboutSection />
             <ServicesSection />

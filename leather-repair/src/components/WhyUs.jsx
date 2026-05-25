@@ -29,8 +29,8 @@ const USPS = [
     ),
   },
   {
-    title: 'Furniture & automotive',
-    desc: 'One specialist for sofas, chairs, recliners, car seats, and steering wheels.',
+    title: 'Furniture, auto, marine & more',
+    desc: 'Sofas, recliners, car interiors, boat seats, motorcycle and RV upholstery.',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M4 18v-2h2v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3h2v2H4zm4-5v3h8v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1zM6 9V5h12v4h-2V7H8v2H6z" fill="currentColor" />
@@ -44,7 +44,7 @@ export default function WhyUs() {
     <section className="section why" aria-labelledby="why-title">
       <div className="container">
         <h2 className="section__title" id="why-title">Why choose us</h2>
-        <p className="lead">Specialists in leather restoration — not a general furniture shop.</p>
+        <p className="lead">Specialists in leather and upholstery restoration — sofas, cars, boats, and more.</p>
         <ul className="why__grid">
           {USPS.map((u) => (
             <li key={u.title} className="why__item">

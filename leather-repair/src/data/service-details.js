@@ -8,7 +8,7 @@ export const SERVICE_DETAILS = {
   'leather-scratch-repair': {
     title: 'Leather scratch repair',
     lead:
-      'From light surface marks to deep gouges — blended into the surrounding finish so the repair is invisible.',
+      'From light surface marks to deep gouges on sofas, car seats, boat upholstery, and more — blended into the surrounding finish so the repair is invisible.',
     img: '/img/sofa-scratch-after2.jpg',
     imgAlt: 'Restored leather sofa armrest after scratch and finish repair',
     causes: {
@@ -48,7 +48,7 @@ export const SERVICE_DETAILS = {
   'leather-recoloring': {
     title: 'Leather recoloring & dye match',
     lead:
-      'Faded sofas, sun-damaged car seats, worn-out office chairs — restored to their original color and depth.',
+      'Faded sofas, sun-damaged car seats, worn-out office chairs, boat and motorcycle seats — restored to their original color and depth on leather, vinyl, and leather-match.',
     img: '/img/sofa-scratch-after1.jpg',
     imgAlt: 'Full ornate chesterfield sofa fully restored with color-matched finish',
     causes: {
@@ -80,7 +80,7 @@ export const SERVICE_DETAILS = {
   'leather-conditioning': {
     title: 'Leather cleaning & conditioning',
     lead:
-      'Deep cleans and protective conditioning — the maintenance most leather never gets, and the reason it cracks years too early.',
+      'Deep cleans and protective conditioning for sofas, recliners, car interiors, and boat seats — the maintenance most leather never gets, and the reason it cracks years too early.',
     img: '/img/sofa-scratch-after3.jpg',
     imgAlt: 'Restored leather sofa with deep clean and conditioning finish',
     causes: {

@@ -46,7 +46,7 @@ export default function ServicesSection() {
     <section className="section section--dim" id="services" aria-labelledby="services-title">
       <div className="container">
         <h2 className="section__title" id="services-title">What we repair</h2>
-        <p className="lead">From a single scratch to a full recolor — furniture and automotive leather, restored.</p>
+        <p className="lead">From a single scratch to a full recolor — leather, vinyl, and upholstery across sofas, cars, boats, motorcycles, and RVs.</p>
         <ul className="svc-grid">
           {SERVICES.map((s) => (
             <li key={s.key} className="svc-grid__item">

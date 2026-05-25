@@ -32,7 +32,7 @@ export default function FaqPage() {
           </details>
           <details className="faq__item">
             <summary>What kinds of issues do you repair?</summary>
-            <p>We handle scratches, cracks, scuffs, fading, stains, wear, seam/stitching issues, bolster wear, foam/cushion problems, recoloring, conditioning, and more.</p>
+            <p>We handle scratches, cracks, scuffs, fading, stains, wear, seam/stitching issues, bolster wear, foam/cushion problems, recoloring, conditioning, and more — on furniture, car and truck interiors, boat and marine upholstery, motorcycle seats, and RV chairs.</p>
           </details>
           <details className="faq__item">
             <summary>How do I get a free estimate?</summary>
@@ -43,8 +43,12 @@ export default function FaqPage() {
             <p>Most small repairs are completed in 1–2 hours. Larger furniture projects can take a few hours. We’ll give you a timeline when we schedule the job.</p>
           </details>
           <details className="faq__item">
-            <summary>What types of leather do you work with?</summary>
-            <p>We restore genuine leather, bonded leather, vinyl, and leather-match surfaces. Each material requires a different approach.</p>
+            <summary>What materials do you work with?</summary>
+            <p>Genuine leather, bonded leather, vinyl, and leather-match (where leather panels are paired with vinyl backings on furniture and seats). Each material needs a different cleaner, dye, and topcoat — we adjust the process to whatever's actually on your piece.</p>
+          </details>
+          <details className="faq__item">
+            <summary>Do you work on boats, motorcycles, or RVs?</summary>
+            <p>Yes — boat seats, helm chairs, marine vinyl panels, motorcycle saddles, RV captain's chairs and dinettes are all in scope. We handle both leather and marine-grade vinyl, with finishes rated for sun and moisture exposure when relevant.</p>
           </details>
           <details className="faq__item">
             <summary>Is the repair permanent?</summary>

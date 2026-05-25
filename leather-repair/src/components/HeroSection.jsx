@@ -19,8 +19,8 @@ export default function HeroSection() {
         <p className="hero__eyebrow">{BUSINESS.serviceArea.join(' · ')}</p>
         <h1 className="hero__title">Bring your leather back to life.</h1>
         <p className="hero__subtitle">
-          Expert repair, recoloring, and conditioning for furniture and automotive interiors —
-          on-site service across the {BUSINESS.serviceArea[0]} area.
+          Sofas, recliners, car interiors, boat and RV upholstery —
+          leather, vinyl, and leather-match. On-site across the {BUSINESS.serviceArea[0]} area.
         </p>
         <div className="hero__cta-row">
           <a href="#contact" className="btn btn--primary btn--lg">Get a free estimate</a>

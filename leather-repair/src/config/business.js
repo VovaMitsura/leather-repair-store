@@ -4,7 +4,7 @@
 export const BUSINESS = {
   name: 'Mitsura Leather Repair',
   legalName: 'Mitsura LLC',
-  tagline: 'Leather Repair & Restoration',
+  tagline: 'Leather & Upholstery Repair',
 
   // Contact
   phone: {
